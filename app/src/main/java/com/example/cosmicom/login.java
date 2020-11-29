@@ -38,6 +38,7 @@ public class login extends AppCompatActivity implements AdapterView.OnItemSelect
         mPassword = findViewById(R.id.password_et);
         progressBar = findViewById(R.id.progressBar);
         Spinner spinner = (Spinner) findViewById(R.id.user_type);
+        spinner.setOnItemSelectedListener(this);
 // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.user_type, android.R.layout.simple_spinner_item);
@@ -69,17 +70,18 @@ public class login extends AppCompatActivity implements AdapterView.OnItemSelect
                 User user  =  new User(email,user_type_selection,password);
                 Map<String, String> fields = new HashMap<>();
                 fields.put("email", email);
-                fields.put("user_type", user_type_selection);
+                fields.put("usertype", user_type_selection);
                 fields.put("password", password);
                 Call<User>call=userInterface.createPost(fields);
                 call.enqueue(new Callback<User>() {
                     @Override
                     public void onResponse(Call<User> call, Response<User> response) {
-                        Log.d("wtf", String.valueOf(response.code()));
+                        Log.d("wtf", Integer.toString(response.code()));
+                        progressBar.setVisibility(View.INVISIBLE);
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {
-
+                        Log.d("wtf", t.toString());
                     }
                 });
             }
