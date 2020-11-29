@@ -42,7 +42,14 @@
             android:inputType="textPassword"
             android:layout_margin="8dp"
             android:padding="8dp"/>
-
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/user_type"
+            android:tag="User_type"
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            />
         <Button
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
@@ -61,7 +68,6 @@
             android:layout_height="wrap_content"
             android:text="New user?"
             android:layout_margin="20dp"
-            android:onClick="takeToRegister"
             />
 
         <ProgressBar
