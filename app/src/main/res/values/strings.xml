@@ -7,4 +7,9 @@
         <item>Shipper</item>
         <item>Employee</item>
     </string-array>
+    <string-array name="register_user_type">
+        <item>User</item>
+        <item>Merchant</item>
+        <item>Shipper</item>
+    </string-array>
 </resources>

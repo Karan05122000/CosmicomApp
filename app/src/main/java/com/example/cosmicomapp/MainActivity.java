@@ -1,6 +1,7 @@
-package com.example.cosmicom;
+package com.example.cosmicomapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {

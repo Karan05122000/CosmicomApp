@@ -1,4 +1,4 @@
-package com.example.cosmicom;
+package com.example.cosmicomapp;
 
 import org.junit.Test;
 

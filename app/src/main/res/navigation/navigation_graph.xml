@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.cosmicomapp.Login"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment"
+        >
+        <action
+            android:id="@+id/login_to_register"
+            app:destination="@+id/registerFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            />
+        <action
+            android:id="@+id/login_to_user_landing"
+            app:destination="@id/userLanding"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+        <action
+            android:id="@+id/action_loginFragment_to_merchant"
+            app:destination="@id/merchant"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+        <action
+            android:id="@+id/action_loginFragment_to_shipper"
+            app:destination="@id/shipper"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+        <action
+            android:id="@+id/action_loginFragment_to_employee"
+            app:destination="@id/employee"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"/>
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.example.cosmicomapp.Register"
+        android:label="register_fragment"
+        tools:layout="@layout/register_fragment">
+
+    </fragment>
+    <fragment
+        android:id="@+id/userLanding"
+        android:name="com.example.cosmicomapp.UserLanding"
+        android:label="user_landing_fragment"
+        tools:layout="@layout/user_landing_fragment" />
+    <fragment
+        android:id="@+id/employee"
+        android:name="com.example.cosmicomapp.Employee"
+        android:label="employee_fragment"
+        tools:layout="@layout/employee_fragment" />
+    <fragment
+        android:id="@+id/merchant"
+        android:name="com.example.cosmicomapp.Merchant"
+        android:label="merchant_fragment"
+        tools:layout="@layout/merchant_fragment" />
+    <fragment
+        android:id="@+id/shipper"
+        android:name="com.example.cosmicomapp.Shipper"
+        android:label="shipper_fragment"
+        tools:layout="@layout/shipper_fragment" />
+</navigation>
