@@ -23,7 +23,10 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.JsonParser;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -96,6 +99,28 @@ public class Login extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         usertype = "User";
+        String token = getActivity().getSharedPreferences("authorization", Context.MODE_PRIVATE).getString("token", "");
+        if (token != null && !token.isEmpty()) {
+            token = token.split("\\.")[1];
+            String usertype = new JsonParser()
+                    .parse(new String(Base64.getDecoder().decode(token), StandardCharsets.UTF_8))
+                    .getAsJsonObject().get("usertype").getAsString();
+
+            final NavController navController = Navigation.findNavController(this.getActivity(), R.id.my_nav_host_fragment);
+
+            if (usertype.toLowerCase().contains("user")) {
+                navController.navigate(R.id.login_to_user_landing);
+            }
+            else if (usertype.toLowerCase().contains("merchant")) {
+                navController.navigate(R.id.action_loginFragment_to_merchant);
+            }
+            else if (usertype.toLowerCase().contains("shipper")) {
+                navController.navigate(R.id.action_loginFragment_to_shipper);
+            }
+            else {
+                navController.navigate(R.id.action_loginFragment_to_employee);
+            }
+        }
         return inflater.inflate(R.layout.login_fragment, container, false);
     }
 
