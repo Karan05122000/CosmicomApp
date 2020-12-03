@@ -1,5 +1,7 @@
 package com.example.cosmicomapp;
 
+import android.widget.SimpleAdapter;
+
 import java.util.Map;
 
 import retrofit2.Call;
@@ -11,5 +13,5 @@ public interface RegisterRequest {
 
     @FormUrlEncoded
     @POST("register")
-    Call createPost(@FieldMap Map<String, String> fields);
+    Call<SimpleAdapter> createPost(@FieldMap Map<String, String> fields);
 }
