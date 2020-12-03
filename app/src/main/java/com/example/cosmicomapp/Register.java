@@ -141,30 +141,39 @@ public class Register extends Fragment {
                 Map<String, String> fields = new HashMap<>();
                 if (usertype.equals("User")) {
 
-                    if (TextUtils.isEmpty(Name)) {
-                        name.setError("Password is required");
-                        return;
-                    }
-                    if (TextUtils.isEmpty(Email)) {
-                        email.setError("Password is required");
+                    if (TextUtils.isEmpty(cc)) {
+                        country.setError("Country is required");
                         return;
                     }
                     if (TextUtils.isEmpty(gnd)) {
-                        gender.setError("Password is required");
+                        gender.setError("Gender is required");
                         return;
                     }
                     if (TextUtils.isEmpty(Phone)) {
-                        phone.setError("Password is required");
+                        phone.setError("Phone is required");
                         return;
                     }
                     if (TextUtils.isEmpty(Dob)) {
-                        DOB.setError("Password is required");
+                        DOB.setError("Date of Birth is required");
                         return;
                     }
-                    if (TextUtils.isEmpty(cc)) {
-                        country.setError("Password is required");
+                    if (TextUtils.isEmpty(Name)) {
+                        name.setError("Name is required");
                         return;
                     }
+                    if (TextUtils.isEmpty(Email)) {
+                        email.setError("Email is required");
+                        return;
+                    }
+                    if (TextUtils.isEmpty(Password)) {
+                        email.setError("Password is required");
+                        return;
+                    }
+                    if (TextUtils.isEmpty(confirmP)) {
+                        email.setError("Confirm Password is required");
+                        return;
+                    }
+
                     fields.put("name", Name);
                     fields.put("email", Email);
                     fields.put("password", Password);
@@ -195,16 +204,21 @@ public class Register extends Fragment {
                 } else {
 
                     Log.d("abc",usertype.substring(0,1).toLowerCase().concat(usertype.substring(1)));
+
+                    if (TextUtils.isEmpty(cc)) {
+                        country.setError("Country is required");
+                        return;
+                    }
                     if (TextUtils.isEmpty(webs)) {
-                        website.setError("Email is required");
+                        website.setError("Website is required");
                         return;
                     }
                     if (TextUtils.isEmpty(Name)) {
-                        name.setError("Password is required");
+                        name.setError("Name is required");
                         return;
                     }
                     if (TextUtils.isEmpty(Email)) {
-                        email.setError("Password is required");
+                        email.setError("Email is required");
                         return;
                     }
                     if (TextUtils.isEmpty(Password)) {
@@ -212,11 +226,7 @@ public class Register extends Fragment {
                         return;
                     }
                     if (TextUtils.isEmpty(confirmP)) {
-                        cPassword.setError("Password is required");
-                        return;
-                    }
-                    if (TextUtils.isEmpty(cc)) {
-                        country.setError("Password is required");
+                        cPassword.setError("Confirm Password is required");
                         return;
                     }
 
