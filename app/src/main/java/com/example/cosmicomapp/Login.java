@@ -71,15 +71,15 @@ class LoginResponse {
 }
 
 interface LoginRequest {
-    @POST("login")
-    Call<LoginResponse> createPost(@Body User user);
-    @FormUrlEncoded
-    @POST("login")
-    Call<LoginResponse> createPost(
-            @Field("email") String email,
-            @Field("usertype") String usertype,
-            @Field("password") String password
-    );
+//    @POST("login")
+//    Call<LoginResponse> createPost(@Body User user);
+//    @FormUrlEncoded
+//    @POST("login")
+//    Call<LoginResponse> createPost(
+//            @Field("email") String email,
+//            @Field("usertype") String usertype,
+//            @Field("password") String password
+//    );
     @FormUrlEncoded
     @POST("login")
     Call<LoginResponse> createPost(@FieldMap Map<String, String> fields);
