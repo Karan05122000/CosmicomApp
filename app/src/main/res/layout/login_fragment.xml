@@ -92,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Create an new account?"
-            android:textColor="@color/purple_500"
+            android:textColor="@color/blue_500"
             style="@style/Widget.AppCompat.Button.Borderless"
             />
 
