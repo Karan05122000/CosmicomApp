@@ -16,6 +16,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -177,10 +178,16 @@ public class Register extends Fragment {
                         @Override
                         public void onResponse(Call<SimpleAdapter> call, Response<SimpleAdapter> response) {
                             Log.d("abc", String.valueOf(response.code()));
+                            if(response.code()==200){
+                                Toast.makeText(getContext(),"Success",Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getContext(),"Failure",Toast.LENGTH_LONG).show();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<SimpleAdapter> call, Throwable t) {
+                            Toast.makeText(getContext(),"Failure",Toast.LENGTH_LONG).show();
 
                         }
                     });
@@ -220,6 +227,24 @@ public class Register extends Fragment {
                     fields.put("country_code", cc1);
                     fields.put("usertype", usertype.substring(0,0).toLowerCase().concat(usertype.substring(1,usertype.length()-1)));
 
+                    Call<SimpleAdapter> call = registerRequest.createPost(fields);
+                    call.enqueue(new Callback<SimpleAdapter>() {
+                        @Override
+                        public void onResponse(Call<SimpleAdapter> call, Response<SimpleAdapter> response) {
+                            Log.d("abc", String.valueOf(response.code()));
+                            if(response.code()==200){
+                                Toast.makeText(getContext(),"Success",Toast.LENGTH_LONG).show();
+                            }else{
+                                Toast.makeText(getContext(),"Failure",Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<SimpleAdapter> call, Throwable t) {
+                            Toast.makeText(getContext(),"Failure",Toast.LENGTH_LONG).show();
+
+                        }
+                    });
                 }
             }
         });
