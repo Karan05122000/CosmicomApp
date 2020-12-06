@@ -2,10 +2,10 @@
     <string name="app_name">Cosmicom</string>
     <string name="base_url">https://cosmicom.herokuapp.com/</string>
     <string-array name="user_type">
-        <item>User</item>
-        <item>Merchant</item>
-        <item>Shipper</item>
-        <item>Employee</item>
+        <item>user</item>
+        <item>merchant</item>
+        <item>shipper</item>
+        <item>employee</item>
     </string-array>
     <string-array name="register_user_type">
         <item>User</item>
