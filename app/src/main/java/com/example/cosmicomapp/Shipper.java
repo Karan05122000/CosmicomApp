@@ -65,8 +65,14 @@ public class Shipper extends Fragment {
                     Log.d("abcd", "success");
                     Log.d("abcd", String.valueOf(response.code()));
                     Log.d("abcd", String.valueOf(response.body().size()));
-                    progressBar.setVisibility(View.INVISIBLE);
-                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));
+                    if(response.body().size()==0){
+                        progressBar.setVisibility(View.INVISIBLE);
+                        textView.setVisibility(View.VISIBLE);
+                    }else{
+                        textView.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.INVISIBLE);
+                        recyclerView.setVisibility(View.VISIBLE);
+                        recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true,"packed"));}
                 }
             }
 
@@ -99,7 +105,7 @@ public class Shipper extends Fragment {
                                 textView.setVisibility(View.INVISIBLE);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 recyclerView.setVisibility(View.VISIBLE);
-                                recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
+                                recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true,"packed"));}
                             }
                         }
 
@@ -128,7 +134,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true,"dispatched"));}
                             }
                         }
 
@@ -157,7 +163,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),false));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),false,"abc"));}
                             }
                         }
 
@@ -186,7 +192,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true,"delivered"));}
                             }
                         }
 
