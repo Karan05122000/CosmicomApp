@@ -66,7 +66,7 @@ public class Shipper extends Fragment {
                     Log.d("abcd", String.valueOf(response.code()));
                     Log.d("abcd", String.valueOf(response.body().size()));
                     progressBar.setVisibility(View.INVISIBLE);
-                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body()));
+                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));
                 }
             }
 
@@ -99,7 +99,7 @@ public class Shipper extends Fragment {
                                 textView.setVisibility(View.INVISIBLE);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 recyclerView.setVisibility(View.VISIBLE);
-                                recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body()));}
+                                recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
                             }
                         }
 
@@ -128,7 +128,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body()));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
                             }
                         }
 
@@ -157,7 +157,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body()));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),false));}
                             }
                         }
 
@@ -186,7 +186,7 @@ public class Shipper extends Fragment {
                                     textView.setVisibility(View.INVISIBLE);
                                     progressBar.setVisibility(View.INVISIBLE);
                                     recyclerView.setVisibility(View.VISIBLE);
-                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body()));}
+                                    recyclerView.setAdapter(new ShipperRecyclerAdapter(response.body(),true));}
                             }
                         }
 

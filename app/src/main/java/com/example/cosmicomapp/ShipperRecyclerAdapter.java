@@ -15,31 +15,38 @@ import java.util.List;
 public class ShipperRecyclerAdapter extends RecyclerView.Adapter<ShipperRecyclerAdapter.RecyclerViewHolder> {
 
     List<ShipperResponse> list;
+    boolean showButtons;
 
-    public ShipperRecyclerAdapter(List<ShipperResponse> list) {
+    public ShipperRecyclerAdapter(List<ShipperResponse> list, boolean showButtons) {
         this.list = list;
+        this.showButtons = showButtons;
     }
 
     @NonNull
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater=LayoutInflater.from(parent.getContext());
-        View view=layoutInflater.inflate(R.layout.recycler_item_view,parent,false);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        View view = layoutInflater.inflate(R.layout.recycler_item_view, parent, false);
         return new RecyclerViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewHolder holder, int position) {
         holder.shipperName.setText(list.get(position).getName());
-        holder.paymentMode.setText("Payment Mode :- " +list.get(position).getPaymentMode());
-        holder.amount.setText("Amount :- "+list.get(position).getNetAmt());
-        Log.d("idls",list.get(position).getId());
-        holder.tick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        holder.paymentMode.setText("Payment Mode :- " + list.get(position).getPaymentMode());
+        holder.amount.setText("Amount :- " + list.get(position).getNetAmt());
+        if (showButtons == false) {
+            holder.tick.setVisibility(View.GONE);
+            holder.delete.setVisibility(View.GONE);
+        } else {
+            Log.d("idls", list.get(position).getId());
+            holder.tick.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
-            }
-        });
+                }
+            });
+        }
     }
 
 
@@ -59,11 +66,11 @@ public class ShipperRecyclerAdapter extends RecyclerView.Adapter<ShipperRecycler
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
-            shipperName=itemView.findViewById(R.id.shipperName);
-            amount=itemView.findViewById(R.id.amount);
-            paymentMode=itemView.findViewById(R.id.payment_mode);
-            tick=itemView.findViewById(R.id.tick_button);
-            delete=itemView.findViewById(R.id.delete_button);
+            shipperName = itemView.findViewById(R.id.shipperName);
+            amount = itemView.findViewById(R.id.amount);
+            paymentMode = itemView.findViewById(R.id.payment_mode);
+            tick = itemView.findViewById(R.id.tick_button);
+            delete = itemView.findViewById(R.id.delete_button);
         }
 
     }
