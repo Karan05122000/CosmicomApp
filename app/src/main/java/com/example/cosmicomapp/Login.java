@@ -23,9 +23,12 @@ import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Instant;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
@@ -102,24 +105,30 @@ public class Login extends Fragment {
         String token = getActivity().getSharedPreferences("authorization", Context.MODE_PRIVATE).getString("token", "");
         if (token != null && !token.isEmpty()) {
             token = token.split("\\.")[1];
-            String usertype = new JsonParser()
+            JsonObject jsonObject = new JsonParser()
                     .parse(new String(Base64.getDecoder().decode(token), StandardCharsets.UTF_8))
-                    .getAsJsonObject().get("usertype").getAsString();
+                    .getAsJsonObject();
 
-            final NavController navController = Navigation.findNavController(this.getActivity(), R.id.my_nav_host_fragment);
+            String usertype = jsonObject.get("usertype").getAsString();
+            Long exp = jsonObject.get("exp").getAsLong();
 
-            if (usertype.toLowerCase().contains("user")) {
-                navController.navigate(R.id.login_to_user_landing);
+            if (Instant.now().getEpochSecond() <= exp) {
+                final NavController navController = Navigation.findNavController(this.getActivity(), R.id.my_nav_host_fragment);
+//                Log.d("wtf", usertype + " " + token + " " + exp);
+                if (usertype.toLowerCase().contains("user")) {
+                    navController.navigate(R.id.login_to_user_landing);
+                }
+                else if (usertype.toLowerCase().contains("merchant")) {
+                    navController.navigate(R.id.action_loginFragment_to_merchant);
+                }
+                else if (usertype.toLowerCase().contains("shipper")) {
+                    navController.navigate(R.id.action_loginFragment_to_shipper);
+                }
+                else if (usertype.toLowerCase().contains("employee")){
+                    navController.navigate(R.id.action_loginFragment_to_employee);
+                }
             }
-            else if (usertype.toLowerCase().contains("merchant")) {
-                navController.navigate(R.id.action_loginFragment_to_merchant);
-            }
-            else if (usertype.toLowerCase().contains("shipper")) {
-                navController.navigate(R.id.action_loginFragment_to_shipper);
-            }
-            else {
-                navController.navigate(R.id.action_loginFragment_to_employee);
-            }
+
         }
         return inflater.inflate(R.layout.login_fragment, container, false);
     }

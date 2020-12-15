@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Cosmicom</string>
     <string name="base_url">https://cosmicom.herokuapp.com/</string>
+    <string name="launcher_icon">Launcher icon</string>
+    <string name="cosmicom">COSMICOM</string>
     <string-array name="user_type">
         <item>user</item>
         <item>merchant</item>
